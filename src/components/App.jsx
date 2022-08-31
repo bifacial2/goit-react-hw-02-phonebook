@@ -66,14 +66,15 @@ class App extends Component {
     return (
       <div
         style={{
-          // height: '100vh',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           flexDirection: 'column',
           fontSize: 18,
-          // textTransform: 'uppercase',
           color: '#010101',
+          width: '500px',
+          margin: '0 auto',
+          background: 'cadetblue',
         }}
       >
         <h1>Phonebook</h1>
