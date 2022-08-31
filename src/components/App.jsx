@@ -52,19 +52,7 @@ class App extends Component {
     const visibleContacts = this.getVisibleContacts();
 
     return (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexDirection: 'column',
-          fontSize: 18,
-          color: '#010101',
-          width: '500px',
-          margin: '0 auto',
-          background: 'cadetblue',
-        }}
-      >
+      <div className={s.main_blok}>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
 
