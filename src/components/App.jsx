@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import shortid from 'shortid';
 import s from './App.module.css';
 import ContactList from './ContactList/ContactList';
-import ContactForm from './ContactForm';
-import Filter from './Filter';
+import ContactForm from './ContactForm/ContactForm';
+import Filter from './Filter/Filter';
 
 class App extends Component {
   state = {
@@ -15,29 +15,17 @@ class App extends Component {
     ],
     filter: '',
   };
-
-  addContact = ({ name, number }) => {
-    const normalizedName = name.toLowerCase();
-
-    let isAdded = false;
-    this.state.contacts.forEach(el => {
-      if (el.name.toLowerCase() === normalizedName) {
-        alert(`${name} is already in contacts`);
-        isAdded = true;
-      }
-    });
-
-    if (isAdded) {
-      return;
-    }
+  addContact = data => {
     const contact = {
       id: shortid.generate(),
-      name: name,
-      number: number,
+      name: data.name,
+      number: data.number,
     };
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, contact],
-    }));
+    this.setState(({ contacts }) =>
+      contacts.find(contact => contact.name === data.name)
+        ? alert(`${data.name} is already in contacts`)
+        : { contacts: [contact, ...contacts] }
+    );
   };
 
   changeFilter = e => {
